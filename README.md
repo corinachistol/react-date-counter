@@ -1,3 +1,7 @@
+![image](https://github.com/corinachistol/react-date-counter/assets/115491975/38f96007-9d02-42ef-b7e3-dd3377f76a12)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
