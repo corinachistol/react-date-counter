@@ -5,14 +5,6 @@ export default function Counter() {
     const [step, setStep] = useState(1)
     const [count, setCount] = useState(0)
 
-    function decreaseStep() {
-        setStep(s => s - 1)
-    }
-
-    function increaseStep() {
-        setStep(s => s + 1)
-    }
-
     function decreaseCount() {
         setCount(c => c - step)
     }
@@ -28,16 +20,22 @@ export default function Counter() {
     return (
         <div className='container'>
             <div>
-                <button onClick={decreaseStep}>-</button>
+                <input type="range" min="1" max="10" onChange={(e)=>setStep(Number(e.target.value))} value={step} />
                 <span>Step: {step}</span>
-                <button onClick={increaseStep}>+</button>
+               
             </div>
             <div>
                 <button onClick={decreaseCount}>-</button>
-                <span>Count: {count}</span>
+                <input type="text" value={count} onChange={(e)=>setCount(Number(e.target.value))}/>
                 <button onClick={increaseCount}>+</button>
             </div>
-            <p>{count === 0 ? "Today is " : count > 0 ? `${count} days from today is ` : `${Math.abs(count)} days ago was `}{date.toDateString()} </p>
+            <p>
+                {count === 0 ? "Today is " 
+                : count > 0 ? `${count} days from today is ` 
+                : `${Math.abs(count)} days ago was `}{date.toDateString()} </p>
+            {(count !==0 || step !== 1 ) && <div>
+                <button onClick={()=>{setStep(1); setCount(0)}}>Reset</button>
+            </div>}
 
         </div>
     )
